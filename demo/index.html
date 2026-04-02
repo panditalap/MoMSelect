@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoMSelect — Demo</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../dist/momselect.css" />
+  <style>
+    body { background: #f5f7fa; }
+    .hero {
+      background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+      color: white;
+      padding: 3rem 1rem 2rem;
+      text-align: center;
+    }
+    .hero h1 { font-size: 2.8rem; font-weight: 800; letter-spacing: -1px; }
+    .hero p  { opacity: .85; font-size: 1.1rem; }
+    .dedication {
+      font-size: .9rem;
+      opacity: .7;
+      font-style: italic;
+      margin-top: .5rem;
+    }
+    .badge-pill {
+      background: rgba(255,255,255,.2);
+      padding: .25rem .75rem;
+      border-radius: 999px;
+      font-size: .75rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    .demo-card {
+      background: #fff;
+      border-radius: .75rem;
+      box-shadow: 0 2px 16px rgba(0,0,0,.07);
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .demo-card h5 {
+      font-weight: 700;
+      margin-bottom: .25rem;
+    }
+    .demo-card .subtitle {
+      font-size: .82rem;
+      color: #6c757d;
+      margin-bottom: 1rem;
+    }
+    .output-box {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: .375rem;
+      padding: .5rem .75rem;
+      font-size: .8rem;
+      color: #495057;
+      margin-top: .75rem;
+      min-height: 2rem;
+      font-family: monospace;
+    }
+    .feature-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: 1.5rem 0;
+    }
+    .feature-chip {
+      background: #e7f1ff;
+      color: #0d6efd;
+      border-radius: 999px;
+      padding: .25rem .75rem;
+      font-size: .78rem;
+      font-weight: 600;
+    }
+    pre {
+      background: #1e1e2e;
+      color: #cdd6f4;
+      border-radius: .5rem;
+      padding: 1.25rem;
+      font-size: .82rem;
+      overflow-x: auto;
+    }
+    .kw   { color: #cba6f7; }
+    .fn   { color: #89b4fa; }
+    .str  { color: #a6e3a1; }
+    .cm   { color: #585b70; font-style: italic; }
+    .num  { color: #fab387; }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #6c757d;
+      font-size: .85rem;
+    }
+    footer a { color: #0d6efd; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge-pill">v1.0.0 · Zero Dependencies · MIT</div>
+  <h1>MoMSelect</h1>
+  <p>Mom's Own Multi-Select — A production-ready, pure JavaScript multi-select component.</p>
+  <p class="dedication">♥ Dedicated to my mother. Built for everyone.</p>
+  <div class="mt-3">
+    <a href="https://github.com/alapandit/momselect"
+       class="btn btn-light btn-sm me-2" target="_blank">GitHub</a>
+    <a href="https://cdn.jsdelivr.net/gh/alapandit/momselect@latest/dist/momselect.min.js"
+       class="btn btn-outline-light btn-sm" target="_blank">CDN</a>
+  </div>
+</div>
+
+<div class="container py-5">
+
+  <!-- FEATURES -->
+  <div class="feature-list justify-content-center mb-4">
+    <span class="feature-chip">✓ XSS Safe</span>
+    <span class="feature-chip">✓ Zero Dependencies</span>
+    <span class="feature-chip">✓ Fuzzy Search</span>
+    <span class="feature-chip">✓ Grouped Options</span>
+    <span class="feature-chip">✓ Keyboard Navigation</span>
+    <span class="feature-chip">✓ Mobile Modal</span>
+    <span class="feature-chip">✓ Smart Flip</span>
+    <span class="feature-chip">✓ Form Reset</span>
+    <span class="feature-chip">✓ UMD / npm / CDN</span>
+    <span class="feature-chip">✓ ARIA Accessible</span>
+  </div>
+
+  <div class="row g-4">
+
+    <!-- DEMO 1: Basic -->
+    <div class="col-lg-6">
+      <div class="demo-card">
+        <h5>Basic Usage</h5>
+        <p class="subtitle">Simple flat list with max 3 selections.</p>
+        <input type="text" id="demo1" class="form-control" placeholder="Select fruits…" />
+        <div class="output-box" id="demo1-out">No selection yet.</div>
+      </div>
+    </div>
+
+    <!-- DEMO 2: Grouped -->
+    <div class="col-lg-6">
+      <div class="demo-card">
+        <h5>Grouped Options</h5>
+        <p class="subtitle">Options organized into labeled groups.</p>
+        <input type="text" id="demo2" class="form-control" placeholder="Select a city…" />
+        <div class="output-box" id="demo2-out">No selection yet.</div>
+      </div>
+    </div>
+
+    <!-- DEMO 3: 2D Array -->
+    <div class="col-lg-6">
+      <div class="demo-card">
+        <h5>2D Array Input</h5>
+        <p class="subtitle">Feed raw database rows directly — no mapping needed.</p>
+        <input type="text" id="demo3" class="form-control" placeholder="Select a country…" />
+        <div class="output-box" id="demo3-out">No selection yet.</div>
+      </div>
+    </div>
+
+    <!-- DEMO 4: Pre-filled + API -->
+    <div class="col-lg-6">
+      <div class="demo-card">
+        <h5>Pre-filled + Programmatic API</h5>
+        <p class="subtitle">Values set on init. Use buttons to control via API.</p>
+        <input type="text" id="demo4" class="form-control" value="js,python" />
+        <div class="mt-2 d-flex gap-2 flex-wrap">
+          <button class="btn btn-sm btn-outline-primary" onclick="MoMSelect.setValue('#demo4','js,python,rust')">Set JS+Python+Rust</button>
+          <button class="btn btn-sm btn-outline-danger"  onclick="MoMSelect.clear('#demo4')">Clear</button>
+          <button class="btn btn-sm btn-outline-secondary" onclick="MoMSelect.reset('#demo4')">Reset</button>
+        </div>
+        <div class="output-box" id="demo4-out">Pre-filled: js, python</div>
+      </div>
+    </div>
+
+    <!-- DEMO 5: Disabled options -->
+    <div class="col-lg-6">
+      <div class="demo-card">
+        <h5>Disabled Options</h5>
+        <p class="subtitle">Some options can be marked as non-selectable.</p>
+        <input type="text" id="demo5" class="form-control" placeholder="Choose a plan…" />
+        <div class="output-box" id="demo5-out">No selection yet.</div>
+      </div>
+    </div>
+
+    <!-- DEMO 6: In a form -->
+    <div class="col-lg-6">
+      <div class="demo-card">
+        <h5>Native Form Integration</h5>
+        <p class="subtitle">Works with form submit and reset natively.</p>
+        <form id="demo-form">
+          <input type="text" id="demo6" name="skills" class="form-control" placeholder="Select skills…" />
+          <div class="mt-2 d-flex gap-2">
+            <button type="reset"  class="btn btn-sm btn-outline-secondary">Reset Form</button>
+            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+          </div>
+        </form>
+        <div class="output-box" id="demo6-out">No selection yet.</div>
+      </div>
+    </div>
+
+  </div><!-- /row -->
+
+
+  <!-- INSTALL -->
+  <h4 class="fw-bold mt-5 mb-3">Installation</h4>
+
+  <div class="demo-card">
+    <h5>CDN (quickest)</h5>
+    <pre><span class="cm">&lt;!-- In &lt;head&gt; --&gt;</span>
+&lt;link rel=<span class="str">"stylesheet"</span> href=<span class="str">"https://cdn.jsdelivr.net/gh/alapandit/momselect@latest/dist/momselect.min.css"</span>&gt;
+
+<span class="cm">&lt;!-- Before &lt;/body&gt; --&gt;</span>
+&lt;script src=<span class="str">"https://cdn.jsdelivr.net/gh/alapandit/momselect@latest/dist/momselect.min.js"</span>&gt;&lt;/script&gt;</pre>
+
+    <h5 class="mt-3">npm</h5>
+    <pre>npm install momselect</pre>
+    <pre><span class="kw">import</span> MoMSelect <span class="kw">from</span> <span class="str">'momselect'</span>;
+<span class="kw">import</span> <span class="str">'momselect/dist/momselect.min.css'</span>;</pre>
+  </div>
+
+
+  <!-- QUICK START -->
+  <h4 class="fw-bold mt-4 mb-3">Quick Start</h4>
+  <div class="demo-card">
+    <pre><span class="cm">// Object array</span>
+<span class="fn">MoMSelect</span>.init(<span class="str">'#myInput'</span>, [
+  { label: <span class="str">'Apple'</span>,  value: <span class="str">'apple'</span>  },
+  { label: <span class="str">'Banana'</span>, value: <span class="str">'banana'</span> },
+  { label: <span class="str">'Cherry'</span>, value: <span class="str">'cherry'</span> },
+], {
+  max:         <span class="num">3</span>,
+  placeholder: <span class="str">'Pick up to 3 fruits…'</span>,
+  onChange:    <span class="kw">(e)</span> =&gt; console.log(e.selectedValues),
+});
+
+<span class="cm">// 2D array (raw DB rows)</span>
+<span class="fn">MoMSelect</span>.init(<span class="str">'#myInput'</span>, [
+  [<span class="str">'India'</span>, <span class="str">'IN'</span>, <span class="str">'Asia'</span>],
+  [<span class="str">'France'</span>, <span class="str">'FR'</span>, <span class="str">'Europe'</span>],
+], { labelCol: <span class="num">0</span>, valueCol: <span class="num">1</span>, groupCol: <span class="num">2</span> });
+
+<span class="cm">// Programmatic API</span>
+<span class="fn">MoMSelect</span>.setValue(<span class="str">'#myInput'</span>, [<span class="str">'apple'</span>, <span class="str">'cherry'</span>]);
+<span class="fn">MoMSelect</span>.getValue(<span class="str">'#myInput'</span>); <span class="cm">// → ['apple', 'cherry']</span>
+<span class="fn">MoMSelect</span>.clear(<span class="str">'#myInput'</span>);
+<span class="fn">MoMSelect</span>.disable(<span class="str">'#myInput'</span>);
+<span class="fn">MoMSelect</span>.destroy(<span class="str">'#myInput'</span>);</pre>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  <p>MoMSelect · <a href="https://github.com/alapandit/momselect">github.com/alapandit/momselect</a></p>
+  <p style="font-style:italic; font-size:.8rem;">♥ Mom's Own Multi-Select — Dedicated to my mother.</p>
+</footer>
+
+<script src="../dist/momselect.js"></script>
+<script>
+  // Demo 1 — Basic, max 3
+  MoMSelect.init('#demo1', [
+    { label: 'Apple',      value: 'apple'      },
+    { label: 'Banana',     value: 'banana'     },
+    { label: 'Cherry',     value: 'cherry'     },
+    { label: 'Durian',     value: 'durian'     },
+    { label: 'Elderberry', value: 'elderberry' },
+    { label: 'Fig',        value: 'fig'        },
+    { label: 'Guava',      value: 'guava'      },
+    { label: 'Honeydew',   value: 'honeydew'   },
+  ], {
+    max: 3,
+    placeholder: 'Search fruits…',
+    onChange: (e) => {
+      document.getElementById('demo1-out').textContent =
+        'Selected: ' + (e.selectedValues.join(', ') || 'none');
+    }
+  });
+
+  // Demo 2 — Grouped
+  MoMSelect.init('#demo2', [
+    { label: 'Mumbai',    value: 'mumbai',    group: 'India'  },
+    { label: 'Delhi',     value: 'delhi',     group: 'India'  },
+    { label: 'Bangalore', value: 'bangalore', group: 'India'  },
+    { label: 'London',    value: 'london',    group: 'UK'     },
+    { label: 'Manchester',value: 'manchester',group: 'UK'     },
+    { label: 'Paris',     value: 'paris',     group: 'France' },
+    { label: 'Lyon',      value: 'lyon',      group: 'France' },
+    { label: 'Tokyo',     value: 'tokyo',     group: 'Japan'  },
+    { label: 'Osaka',     value: 'osaka',     group: 'Japan'  },
+  ], {
+    onChange: (e) => {
+      document.getElementById('demo2-out').textContent =
+        'Selected: ' + (e.selectedValues.join(', ') || 'none');
+    }
+  });
+
+  // Demo 3 — 2D Array
+  MoMSelect.init('#demo3', [
+    ['India',   'IN',  'Asia'   ],
+    ['China',   'CN',  'Asia'   ],
+    ['Japan',   'JP',  'Asia'   ],
+    ['France',  'FR',  'Europe' ],
+    ['Germany', 'DE',  'Europe' ],
+    ['Italy',   'IT',  'Europe' ],
+    ['USA',     'US',  'Americas'],
+    ['Brazil',  'BR',  'Americas'],
+    ['Canada',  'CA',  'Americas'],
+  ], {
+    labelCol: 0, valueCol: 1, groupCol: 2,
+    onChange: (e) => {
+      document.getElementById('demo3-out').textContent =
+        'Selected codes: ' + (e.selectedValues.join(', ') || 'none');
+    }
+  });
+
+  // Demo 4 — Pre-filled + API
+  MoMSelect.init('#demo4', [
+    { label: 'JavaScript', value: 'js'     },
+    { label: 'Python',     value: 'python' },
+    { label: 'Rust',       value: 'rust'   },
+    { label: 'Go',         value: 'go'     },
+    { label: 'TypeScript', value: 'ts'     },
+    { label: 'C++',        value: 'cpp'    },
+  ], {
+    onChange: (e) => {
+      document.getElementById('demo4-out').textContent =
+        'Selected: ' + (e.selectedValues.join(', ') || 'none');
+    }
+  });
+
+  // Demo 5 — Disabled options
+  MoMSelect.init('#demo5', [
+    { label: 'Free',       value: 'free'       },
+    { label: 'Pro',        value: 'pro'        },
+    { label: 'Enterprise', value: 'enterprise', disabled: true },
+    { label: 'Custom',     value: 'custom',     disabled: true },
+  ], {
+    onChange: (e) => {
+      document.getElementById('demo5-out').textContent =
+        'Selected: ' + (e.selectedValues.join(', ') || 'none');
+    }
+  });
+
+  // Demo 6 — Form
+  MoMSelect.init('#demo6', [
+    { label: 'HTML',       value: 'html'   },
+    { label: 'CSS',        value: 'css'    },
+    { label: 'JavaScript', value: 'js'     },
+    { label: 'Python',     value: 'python' },
+    { label: 'SQL',        value: 'sql'    },
+  ], {
+    onChange: (e) => {
+      document.getElementById('demo6-out').textContent =
+        'Selected: ' + (e.selectedValues.join(', ') || 'none');
+    }
+  });
+
+  document.getElementById('demo-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = MoMSelect.getValue('#demo6');
+    document.getElementById('demo6-out').textContent =
+      '✓ Submitted: ' + (val.join(', ') || 'none');
+  });
+</script>
+</body>
+</html>
