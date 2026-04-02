@@ -1,0 +1,39 @@
+{
+  "name": "momselect",
+  "version": "1.0.0",
+  "description": "Mom's Own Multi-Select — A production-ready, zero-dependency vanilla JavaScript multi-select component with fuzzy search, grouped options, mobile modal, smart flip, keyboard navigation, and ARIA accessibility.",
+  "main": "dist/momselect.js",
+  "module": "dist/momselect.js",
+  "style": "dist/momselect.css",
+  "files": [
+    "dist/momselect.js",
+    "dist/momselect.min.js",
+    "dist/momselect.css",
+    "dist/momselect.min.css",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npm run build:js && npm run build:css",
+    "build:js": "terser dist/momselect.js --compress --mangle --output dist/momselect.min.js",
+    "build:css": "cleancss -o dist/momselect.min.css dist/momselect.css"
+  },
+  "keywords": [
+    "multiselect", "multi-select", "select", "dropdown", "search",
+    "vanilla-js", "zero-dependency", "accessible", "aria", "mobile",
+    "fuzzy-search", "grouped-options", "form", "momselect"
+  ],
+  "author": "Alap Pandit",
+  "license": "MIT",
+  "homepage": "https://github.com/alapandit/momselect",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alapandit/momselect.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alapandit/momselect/issues"
+  },
+  "devDependencies": {
+    "terser": "^5.0.0"
+  }
+}
