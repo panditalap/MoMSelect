@@ -4,9 +4,13 @@
 
 > ♥ *Dedicated to my mother. Built for everyone.*
 
+<!-- Badges go here -->
+[![npm version](https://img.shields.io/npm/v/momselect)](https://www.npmjs.com/package/momselect)
+[![npm downloads](https://img.shields.io/npm/dm/momselect)](https://www.npmjs.com/package/momselect)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0.0-brightgreen.svg)](package.json)
-[![Zero Dependencies](https://img.shields.io/badge/dependencies-zero-orange.svg)]()
+![GitHub stars](https://img.shields.io/github/stars/panditalap/MoMSelect)
+![Bundle Size](https://img.shields.io/bundlephobia/minzip/momselect)
+![Zero Dependencies](https://img.shields.io/badge/dependencies-zero-orange.svg)
 
 ---
 
